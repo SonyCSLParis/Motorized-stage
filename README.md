@@ -68,6 +68,22 @@ On the other hand we discovered that the movement along the $x$ axis is flawed. 
 
 [graphe]
 
+Set-up
+
+3D Printing
+
+To link the stepper motors to the stage we had to print two slave pulleys - one for each knob. We did that using the free and open source design and modeling software FreeCAD. We first wanted to design these slave pulleys so that moving the stepper motors by one microstep would move the stage by $5$ $\mu$m.
+
+For the $y$-axis knob we were using the 42STH38 stepper motor which has 1600 microsteps per revolution. We determined that one turn of the $y$-axis knob moves the stage by 4 cm. Knowing that the master pulley has 20 teeth we calculated that the $y$-axis slave pulley needed to have 100 teeth.
+
+[image]
+
+For the $x$-axis we measured that one turn of the knob moves the stage by 2,5 cm. In the case of the $x$ axis the 17HM08-1204S stepper motor has 3200 microsteps per revolution and the master pulley has 20 teeth. Thus we calculated that the $x$-axis slave pulley needed to have 32 teeth. Such a little number of teeth leads to modeling issues.
+
+Thus we decided to design an 80 teeth slave pulley for the $x$-axis knob. This leads to a higher precision : when the stpper motor rotates by 1 microstep, the stage moves by $1,95$ $\mu$m along the $x$ axis.
+
+[image]
+
 comment procéder
 
 Impression des pièces 3D :
