@@ -8,7 +8,11 @@ Objectif 2 phrases
 image avant - après
 
 
+<<<<<<< Updated upstream
 software
+=======
+Matériaux
+>>>>>>> Stashed changes
 
 tableau hardware/software
 
