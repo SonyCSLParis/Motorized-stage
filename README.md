@@ -8,7 +8,7 @@ Objectif 2 phrases
 image avant - après
 
 
-equipement
+software
 
 tableau hardware/software
 
