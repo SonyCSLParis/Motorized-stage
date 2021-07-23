@@ -1,0 +1,3 @@
+[submodule "libromi"]
+	path = libromi
+	url = https://github.com/romi/libromi.git
