@@ -86,8 +86,6 @@ Thus we decided to design an 80 teeth slave pulley for the $x$-axis knob. This l
 
 comment procéder
 
-Impression des pièces 3D :
-fournir nos pièces freecad ou expliquer comment on les a fabriquées (calcul de précision)
 1. Montage 
 lien vers le driver, schéma moteurs
 3. code arduino
