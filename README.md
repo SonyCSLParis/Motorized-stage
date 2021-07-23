@@ -18,18 +18,27 @@ tableau hardware/software
 -> liens vers les fichiers
 
 
-resultat 
+Results
 
-gif
+In the end we were able to control the movement of the stage to go from one trap to the following one. The following animation shows a trap and its neighbour appearing one after the other in the center of the camera.
 
-précision
+[gif]
 
-défauts
+By using the EasyDriver we could rotate each motor by on microstep. In the end the set-up enabled us to reach a minimal movement of $1,95$ $\mu$m along the $x$ axis and of $0,05$ $\mu$m along the $y$ axis.
 
+In order to estimate the quality of our set-up, we measured its precision using the registration method which calculates the spatial correlation between two successive images.
 
+On the one hand the analyses of these results shows that the stage moves linearly along the $y$ axis as expected. We concluded that our set-up was of good quality for this direction.
+
+[graphe]
+
+On the other hand we discovered that the movement along the $x$ axis is flawed. Indeed when moving the stage along this axis we regularly measure a small unwanted movement along the $y$ axis. This shortcoming leads to imprecise movement along the $x$ axis.
+
+[graphe]
 
 comment procéder
-Impression des pièces 3D
+
+Impression des pièces 3D :
 fournir nos pièces freecad ou expliquer comment on les a fabriquées (calcul de précision)
 1. Montage 
 lien vers le driver, schéma moteurs
