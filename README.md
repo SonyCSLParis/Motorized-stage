@@ -85,12 +85,43 @@ Thus we decided to design an 80 teeth slave pulley for the $x$-axis knob. This l
 [image]
 
 comment procéder
-
-1. Montage 
+Impression des pièces 3D
+fournir nos pièces freecad ou expliquer comment on les a fabriquées (calcul de précision)
+2. Montage 
 lien vers le driver, schéma moteurs
 3. code arduino
-lien repo Peter expliquer comment l'installer (mettre la lib de romi dans le dossier arduino)
-4. interface python
+
+First install Arduino IDE and Python 3.7 (links in the **Bill of Materials**)  
+Second download this repository. We will call the address where you save it "path/to/repo" (for example "C://User/Me/MyRepos").
+
+An Arduino code allows to control the 2 motor drivers. Fetch it in the folder libromi:
+
+```
+libromi/firmware/Oquam
+```
+Open it with Arduino IDE software by double clicking on the file **Oquam.ino** and upload the codes on the Arduino by clicking on the arrow. If it fails make sure that you are correctly connected to the Arduino: check the card type and the COM port in the "Tools" ("Outils" on the image). 
+
+![image_arduino](images/upload_arduino.png)
+
+To make the interaction user-friendly, we developed a code that sends instructions to the Arduino through the Serial port. It requires Python. If you already use Python for other projects, you will want to keep this code isolated from your current install. This is possible with a virtual environment. Open Anaconda Prompt and navigate to the repository
+
+```
+conda env create -f environment.yml
+```
+Now activate the environment:  
+
+```
+conda activate motorized-stage
+``` 
+
+You can launch the interface 
+
+```
+cd path/to/repo (here replace by your own path)
+cd Motorized-stage/codes
+python launch_interface.py
+```
+![image](image)
 
 contribute 
 
