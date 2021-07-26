@@ -3,7 +3,7 @@
 
 The goal of this project is to enable the motorised and automated movement of a stage in order to study individually a set of unicellular algae trapped in a microfluidic chip. Such a study requires precise control of the movement on a micrometric scale. For each direction we used a stepper motor controlled via an Arduino UNO microcontroller and an EasyDriver microcontroller. We also had to design 3D parts to link the motors to the stage. 
 
-[image avant - après]
+![image_label](images/before_after.png)
 
 
 # Bill of materials
