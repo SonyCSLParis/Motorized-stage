@@ -84,12 +84,13 @@ Thus we decided to design an 80 teeth slave pulley for the $x$-axis knob. This l
 
 [image]
 
-comment procéder
-Impression des pièces 3D
-fournir nos pièces freecad ou expliquer comment on les a fabriquées (calcul de précision)
 2. Montage 
 lien vers le driver, schéma moteurs
-<<<<<<< Updated upstream
+
+In order to keep things simple we decided to control both stepper motors with one Arduino UNO microcontroller. We still had to use one EasyDriver microcontroller for each stepper motor. We used Brian Schmalzhaus' example running multiple stepper motors (https://www.schmalzhaus.com/EasyDriver/Examples/EasyDriverExamples.html). The set-up can be seen in the following diagram. As we wanted precise movements, we enabled microstepping control for both motors by adding connections between the MS1 and MS2 pins and the ground for each EasyDriver microcontroller.
+
+[schéma]
+
 3. code arduino
 
 First install Arduino IDE and Python 3.7 (links in the **Bill of Materials**)  
@@ -123,16 +124,12 @@ cd Motorized-stage/codes
 python launch_interface.py
 ```
 ![image](image)
-=======
 
-In order to keep things simple we decided to control both stepper motors with one Arduino UNO microcontroller. We still had to use one EasyDriver microcontroller for each stepper motor. We used Brian Schmalzhaus' example running multiple stepper motors (https://www.schmalzhaus.com/EasyDriver/Examples/EasyDriverExamples.html). The set-up can be seen in the following diagram. As we wanted precise movements, we enabled microstepping control for both motors by adding connections between the MS1 and MS2 pins and the ground for each EasyDriver microcontroller.
 
-[schéma]
 
 1. code arduino
 lien repo Peter expliquer comment l'installer (mettre la lib de romi dans le dossier arduino)
 4. interface python
->>>>>>> Stashed changes
 
 contribute 
 
