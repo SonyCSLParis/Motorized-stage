@@ -1,29 +1,39 @@
-# Motorised-stage
+# Automation of a manual microscope stage
+__keywords__: Stepper motors, Arduino, Python, Freecad, 3D printing
 
 
-The goal of this project is to enable the motorised and automated movement of a stage in order to study individually a set of unicellular algae trapped in a microfluidic chip. Such a study requires precise control of the movement on a micrometric scale. For each direction we used a stepper motor controlled via an Arduino UNO microcontroller and an EasyDriver microcontroller. We also had to design 3D parts to link the motors to the stage. 
 
-![image_label](images/before_after.png)
+The goal of this project is to convert a manual microscope stage into a motorized one.   
+We control the motorized stage via Python and provide a user-friendly interface as well as the 3D model for the parts we replaced.
+The precision of displacement approaches the micrometer for an overall budget around 450€.  
 
+<p align="center">
+<img src="images/before_after.png" width="600"/>
+</p>
 
 # Bill of materials
 
 ## Hardware :gear:
+We used what we had in our drawers, it may be possible to reduce the costs by changing some of the equipment. 
 
 | Component|      Quantity      |  Price per unit | Where to find |  
 |----------|:-------------:|------:|------:|  
-| Manual XY stage |  1 | $289 | [Amazon](https://www.manualpositioning.com/e_products_show/?id=45)|  
+| Manual XY stage |  1 | 245€ | [Amazon](https://www.manualpositioning.com/e_products_show/?id=45)|  
 | Arduino Uno |    1   |   24€ | [Robotshop](https://www.robotshop.com/eu/fr/microcontroleur-arduino-uno-r3-usb.html)|  
 | Stepper driver | 2 |    10€ | [Robotshop](https://www.robotshop.com/eu/fr/controleur-moteur-pas-easydriver.html?gclid=EAIaIQobChMIhLiChaj58QIVxQwGAB1bUgYvEAQYASABEgIi8vD_BwE) |  
-| Stepper motor |1 | |  
-| Stepper motor with gearbox | 1| |  
+| Stepper motor  (0.9 °/s, 11 N/cm)  |1 | 11€ | [17HM08-1204S]()|  
+| Stepper motor with gearbox| 1| 73€ |[42STH38-100]()|  
+| Motor belt GT2 |2 | |
+| Motor pulley XXmm |2 | | |
 | Connection wires | | |  
 | Screws M2, M3 | | |  
-| Motor belt GT2 | | |
-| Motor pulley | | | |
+| 3D printer |
+
+If you don't own a 3D printer you can use the platform [Sculpteo](https://www.sculpteo.com). Average delivery time: 2 weeks, possibility to pay for faster delivery. 
+
 
 ## Software :desktop_computer:
-All open-source software
+Only open-source softwares
 
 | Software | Version we used | Download |
 |----------|:-------------:|:-------------:|  
@@ -36,20 +46,23 @@ All open-source software
 ## Codes and files provided :chart_with_upwards_trend:
 
 ### 3D designs: 
-- [small button pulley]  (modified from [manueaswn's scalable pulley](https://www.thingiverse.com/thing:387598 ) )
-- [large button pulley]
-- [plate element]
+- [small button pulley](3D_models/large_button_100t.stl)  (modified from [manueaswn's scalable pulley](https://www.thingiverse.com/thing:387598 ) )
+- [large button pulley](3D_models/medium_button_80t.stl)
+- [plate element](3D_models/plaque_moteur_gearbox.stl)
 
 ### Control of motors by Arduino 
-- [romi repo] (written for the [Romi Project](https://github.com/romi/libromi))
-- [python interface]
+- [libromi](https://github.com/romi/libromi/tree/c6992f0516e695cd28e09cd8dcbb921d4bc2097d) (written for the [Romi Project](https://github.com/romi/libromi))
+- [interface](codes/launch_interface.py)
 
 
 # Results
 
 In the end we were able to control the movement of the stage to go from one trap to the following one. The following animation shows a trap and its neighbour appearing one after the other in the center of the camera.
 
-[gif]
+<p align="center">
+<img src="images/reach_traps.gif" width="600"/>
+</p>
+
 
 By using the EasyDriver we could rotate each motor by on microstep. In the end the set-up enabled us to reach a minimal movement of 1,95 μm along the **x** axis and of 0,05 μm along the **y** axis.
 
@@ -57,11 +70,16 @@ In order to estimate the quality of our set-up, we measured its precision using 
 
 On the one hand the analyses of these results shows that the stage moves linearly along the **y** axis as expected. We concluded that our set-up was of good quality for this direction.
 
-![image_label](images/deplacement_y.png)
+<p align="center">
+<img src="images/deplacement_y.png" width="400"/>
+</p>
 
 On the other hand we discovered that the movement along the **x** axis is flawed. Indeed when moving the stage along this axis we regularly measure a small unwanted movement along the **y** axis. This shortcoming leads to imprecise movement along the **x** axis.
 
-![image_label](images/deplacement_x.png)
+
+<p align="center">
+<img src="images/deplacement_x.png" width=400"/>
+</p>
 
 # Set-up
 
@@ -69,15 +87,22 @@ On the other hand we discovered that the movement along the **x** axis is flawed
 
 ### Pulleys
 
-To link the stepper motors to the stage we had to print two slave pulleys - one for each knob. We did that using the free and open source design and modeling software FreeCAD. We first wanted to design these slave pulleys so that moving the stepper motors by one microstep would move the stage by 5 μm.
+To link the stepper motors to the stage we had to print two slave pulleys - one for each knob. We did that using the free and open-source design and modeling software FreeCAD. We first wanted to design these slave pulleys so that moving the stepper motors by one microstep would move the stage by 5 μm.
 
-For the **y**-axis knob we were using the 42STH38 stepper motor which has 1600 microsteps per revolution. We determined that one turn of the **y**-axis knob moves the stage by 4 cm. Knowing that the master pulley has 20 teeth we calculated that the **y**-axis slave pulley needed to have 100 teeth.
+We determined that one turn of the **y**-axis knob moves the stage by 4 cm. Knowing that the master pulley has 20 teeth and that with the Nema motors we can split one revolution into 1600 steps, we calculated that the **y**-axis slave pulley needed to have 100 teeth. 
 
-![image_label](images/pulley.png)
+We first tested with a simple Nema 17 motor but the couple was not sufficient to move the platform. Therefore we opted for a Nema coupled with a gearbox with 100:1 ratio, multiplying the couple by 100. This motor moved the platform without any issue. 
+
+
+
+
+<p align="center">
+<img src="images/pulley.png" width=300"/>
+</p>
 
 For the **x**-axis we measured that one turn of the knob moves the stage by 2,5 cm. In the case of the **x** axis the 17HM08-1204S stepper motor has 3200 microsteps per revolution and the master pulley has 20 teeth. Thus we calculated that the **x**-axis slave pulley needed to have 32 teeth. Such a little number of teeth leads to modeling issues.
 
-Thus we decided to design an 80 teeth slave pulley for the **x**-axis knob. This leads to a higher precision : when the stpper motor rotates by 1 microstep, the stage moves by 1,95 μm along the **x** axis.
+Thus we decided to design an 80 teeth slave pulley for the **x**-axis knob. This leads to a higher precision : when the stepper motor rotates by 1 microstep, the stage moves by 1,95 μm along the **x** axis (with a simple Nema 17 motor)
 
 ### New plate
 
@@ -85,16 +110,29 @@ Because of structural constraints, the stepper motors had to be fixed to the sta
 
 This new plate has attachment points for both stepper motors and for potential switches and can be screwed to the stage.
 
-![image_label](images/plate_top.png)
-![image_label](images/plate_bottom.png)
+
+<p align="center">
+<img src="images/plate_top.png" width=600"/>
+</p>
+
+<p align="center">
+<img src="images/plate_bottom.png" width=600"/>
+</p>  
 
 ## Assembly
 
-In order to keep things simple we decided to control both stepper motors with one Arduino UNO microcontroller. We still had to use one EasyDriver microcontroller for each stepper motor. We used Brian Schmalzhaus' example running multiple stepper motors (https://www.schmalzhaus.com/EasyDriver/Examples/EasyDriverExamples.html). The set-up can be seen in the following diagram. As we wanted precise movements, we enabled microstepping control for both motors by adding connections between the MS1 and MS2 pins and the ground for each EasyDriver microcontroller.
+In order to keep things simple we decided to control both stepper motors with one Arduino UNO microcontroller. We still had to use one EasyDriver microcontroller for each stepper motor. We used [Brian Schmalzhaus' example](https://www.schmalzhaus.com/EasyDriver/Examples/EasyDriverExamples.html) running multiple stepper motors. The set-up can be seen in the following diagram. As we wanted precise movements, we enabled microstepping control for both motors by adding connections between the MS1 and MS2 pins and the ground for each EasyDriver microcontroller.
 
-[schéma]
 
-1. code arduino
+<p align="center">
+<img src="images/image_from_schmalzhaus.png" width=500"/>
+</p>  
+
+<p align="center">
+<a href=https://www.schmalzhaus.com/EasyDriver/Examples/EasyDriverExamples.html>source</a>
+</p>  
+
+## Arduino and Python codes  
 
 First install Arduino IDE and Python 3.7 (links in the **Bill of Materials**)  
 Second download this repository. We will call the address where you save it "path/to/repo" (for example "C://User/Me/MyRepos").
@@ -106,7 +144,12 @@ libromi/firmware/Oquam
 ```
 Open it with Arduino IDE software by double clicking on the file **Oquam.ino** and upload the codes on the Arduino by clicking on the arrow. If it fails make sure that you are correctly connected to the Arduino: check the card type and the COM port in the "Tools" ("Outils" on the image). 
 
-![image_arduino](images/upload_arduino.png)
+<p align="center">
+<img src="images/upload_arduino.png" width=700"/>
+</p>
+
+
+
 
 To make the interaction user-friendly, we developed a code that sends instructions to the Arduino through the Serial port. It requires Python. If you already use Python for other projects, you will want to keep this code isolated from your current install. This is possible with a virtual environment. Open Anaconda Prompt and navigate to the repository
 
@@ -126,13 +169,13 @@ cd path/to/repo (here replace by your own path)
 cd Motorized-stage/codes
 python launch_interface.py
 ```
-![image](image)
+Press the buttons to move by predefined values, or enter manually a value and press the "move" button. The values correspond to motor steps.
 
 
+<p align="center">
+<img src="images/command_interface.png" width=400"/>
+</p>
 
-1. code arduino
-lien repo Peter expliquer comment l'installer (mettre la lib de romi dans le dossier arduino)
-4. interface python
 
 contribute 
 
