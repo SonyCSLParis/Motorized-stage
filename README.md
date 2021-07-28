@@ -176,8 +176,11 @@ Press the buttons to move by predefined values, or enter manually a value and pr
 <img src="images/command_interface.png" width=400"/>
 </p>
 
+Note: You will have to determine the backlash of each of your motors: the number of steps you have to turn before the platform moves when you change directions. You will find 4 backlash values, one per direction per motor. We found backlash values between 7 and 12 steps. 
 
-contribute 
 
-licence
+
+## Licence
+
+This project is licensed under the [GNU General Public License v3.0](https://tldrlegal.com/license/gnu-general-public-license-v3-(gpl-3))
 
