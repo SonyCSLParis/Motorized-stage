@@ -11,25 +11,34 @@ The precision of displacement approaches the micrometer for an overall budget ar
 <img src="images/before_after.png" width="600"/>
 </p>
 
+
+# Method
+
+The knobs initially used to manually move the platform are linked to motors via 2 belt-pulley systems (X and Y displacements). One removable part of the platform is replaced by a 3D-printed part that allows to fix the two motors. The pulleys are also 3D-printed to fit on the knobs. 
+
+An Arduino is used to control the two stepper motors with two motor shields. The motors are controllable directly via Arduino through the serial interface, or with a Python library that communicates serially with the Arduino, or with a Tkinter interface based on the Python library.
+
 # Bill of materials
 
 ## Hardware :gear:
 We used what we had in our drawers, it may be possible to reduce the costs by changing some of the equipment. 
 
-| Component|      Quantity      |  Price per unit | Where to find |  
+| Component|      Quantity      |  Price per unit | Example|  
 |----------|:-------------:|------:|------:|  
 | Manual XY stage |  1 | 245€ | [Amazon](https://www.manualpositioning.com/e_products_show/?id=45)|  
 | Arduino Uno |    1   |   24€ | [Robotshop](https://www.robotshop.com/eu/fr/microcontroleur-arduino-uno-r3-usb.html)|  
 | Stepper driver | 2 |    10€ | [Robotshop](https://www.robotshop.com/eu/fr/controleur-moteur-pas-easydriver.html?gclid=EAIaIQobChMIhLiChaj58QIVxQwGAB1bUgYvEAQYASABEgIi8vD_BwE) |  
-| Stepper motor  (0.9 °/s, 11 N/cm)  |1 | 11€ | [17HM08-1204S]()|  
-| Stepper motor with gearbox| 1| 73€ |[42STH38-100]()|  
-| Motor belt GT2 |2 | |
-| Motor pulley XXmm |2 | | |
+| Stepper motor  (0.9 °/s, 11 N/cm)  |1 | 11€ | [17HM08-1204S](https://www.omc-stepperonline.com/fr/nema-17-bipolaire-0-9deg-11ncm-15-6oz-in-1-2a-3-6v-42x42x21mm-4-fils.html)|  
+| Stepper motor with gearbox| 1| 73€ |[42STH38-100](https://www.gotronic.fr/art-moteur-42sth38-100-18839.htm)|  
+| Motor belt GT2 |2 |1€|[phidgets](https://www.phidgets.com/?tier=2&catid=42&pcid=35) |
+| Motor pulley 20 teeth/5mm bore |2 | 1€ |[phidgets](https://www.phidgets.com/?tier=2&catid=42&pcid=35) | |
 | Connection wires | | |  
 | Screws M2, M3 | | |  
 | 3D printer |
 
-If you don't own a 3D printer you can use the platform [Sculpteo](https://www.sculpteo.com). Average delivery time: 2 weeks, possibility to pay for faster delivery. 
+Websites where you can buy the hardware: Motedis, Phidget, Robotshop, rs-online, RepRap
+
+If you don't own a 3D printer you can use the platform [Sculpteo](https://www.sculpteo.com). Average delivery time: 2 weeks, possibility to pay for faster delivery. [Example of order](images/sculpteo_order.png).
 
 
 ## Software :desktop_computer:
@@ -46,7 +55,8 @@ Only open-source softwares
 ## Codes and files provided :chart_with_upwards_trend:
 
 ### 3D designs: 
-- [small button pulley](3D_models/large_button_100t.stl)  (modified from [manueaswn's scalable pulley](https://www.thingiverse.com/thing:387598 ) )
+- [scalable pulley Freecad](3D_models/large_button.FCStd) (modified from [manueaswn's scalable pulley](https://www.thingiverse.com/thing:3875983) )
+- [small button pulley](3D_models/large_button_100t.stl)  
 - [large button pulley](3D_models/medium_button_80t.stl)
 - [plate element](3D_models/plaque_moteur_gearbox.stl)
 
@@ -137,6 +147,15 @@ In order to keep things simple we decided to control both stepper motors with on
 First install Arduino IDE and Python 3.7 (links in the **Bill of Materials**)  
 Second download this repository. We will call the address where you save it "path/to/repo" (for example "C://User/Me/MyRepos").
 
+You need to include the library to your Arduino libraries. Copy the folder 
+```
+libromi/arduino_libraries/RomiSerial 
+```
+to your own folder Arduino (usually placed in "Documents")
+```
+Arduino/libraries/
+```
+
 An Arduino code allows to control the 2 motor drivers. Fetch it in the folder libromi:
 
 ```
@@ -180,7 +199,7 @@ Note: You will have to determine the backlash of each of your motors: the number
 
 
 
-## Licence
+## License
 
 This project is licensed under the [GNU General Public License v3.0](https://tldrlegal.com/license/gnu-general-public-license-v3-(gpl-3))
 

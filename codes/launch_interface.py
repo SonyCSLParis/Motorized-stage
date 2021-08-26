@@ -1,3 +1,28 @@
+
+"""
+  Motorised Stage
+
+  Copyright (C) 2021 Sony Computer Science Laboratories
+  Author(s) Ali Ruyer-Thompson, Aliénor Lahlou, Peter Hanappe
+
+  Motorised Stage allows to control the position of a microscope stage.
+
+  Motorised Stage is free software: you can redistribute it and/or modify
+  it under the terms of the GNU Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful, but
+  WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+  General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program.  If not, see
+  <http://www.gnu.org/licenses/>.
+
+"""
+
 from serial import *
 from python_comm import *
 import numpy as np
@@ -92,7 +117,7 @@ entry_y.grid(column = 4, row=1, ipadx=5, pady=5 )
 user_y = tk.Button(frame, text = 'move y', command = move_y_entry)
 user_y.grid(column = 5, row=1, ipadx=5, pady=5 )
 
-# predefined movements x and y (+/- 100, 5à or 10)
+# predefined movements x and y (+/- 100, 50 or 10)
 button2 = tk.Button(frame,
                    text="x - 100", fg="blue", bg="yellow",
                    command = lambda :move_dx(link, -100, -1))

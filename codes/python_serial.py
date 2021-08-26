@@ -1,3 +1,28 @@
+"""
+  Motorised Stage
+
+  Copyright (C) 2021 Sony Computer Science Laboratories
+  Author(s) Ali Ruyer-Thompson, Aliénor Lahlou, Peter Hanappe
+
+  Motorised Stage allows to control the position of a microscope stage.
+
+  Motorised Stage is free software: you can redistribute it and/or modify
+  it under the terms of the GNU Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful, but
+  WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+  General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program.  If not, see
+  <http://www.gnu.org/licenses/>.
+
+"""
+
+
 from serial import *
 
 import time
@@ -64,12 +89,13 @@ def handle_continue(link):
 
 
 def send_idle(link):
-    """assert the connetion is correctly established"""
+    """assert the connection is correctly established"""
     reply = send_command(link, "I")
     return reply[1]
 
 def handle_set_homing(link, a, b, c):
-    """configure the homing order. x:0, y:1. TODO"""
+    """configure the homing order. x:0, y:1, z:2, skip:-1. 
+    Example: set y, then x: handle_set_homing(link, 1, 0, -1)"""
     send_command(link, "h[%d,%d,%d]" % (a,b,c))
 
 
@@ -80,11 +106,11 @@ def handle_homing(link):
 
 
 
-
+#source: https://forum.arduino.cc/t/arduino-and-python/39999
 def reset_arduino(link):
-    link.setDTR(False) # Drop DTR
-    time.sleep(0.022)    # 22ms is what the UI does.
-    link.setDTR(True)  # UP the DTR back
+    link.setDTR(False) 
+    time.sleep(0.022)    
+    link.setDTR(True)  
     time.sleep(2)
 
 """
@@ -97,13 +123,13 @@ reset_arduino(link_arduino)
 
 #handle_moveto(link_arduino, 2000, 1600, 0, 0)
 
-handle_move(link_arduino,  6000, 1600, 0, 0) #ici mettre le déplacement move
+handle_move(link_arduino,  6000, 1600, 0, 0) 
 
 handle_pause(link_arduino) #ici mettre la fonction pause
 
 time.sleep(2.0)
 
-handle_continue(link_arduino) #ici mettre la fonction continue
+handle_continue(link_arduino) 
 
 handle_move(link_arduino,  6000, -1600, 0, 0)
 #check si on est 
