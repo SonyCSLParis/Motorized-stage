@@ -4,8 +4,9 @@ __keywords__: Stepper motors, Arduino, Python, Freecad, 3D printing
 
 
 The goal of this project is to convert a manual microscope stage into a motorized one.   
-We control the motorized stage via Python and provide a user-friendly interface as well as the 3D model for the parts we replaced.
-The precision of displacement approaches the micrometer for an overall budget around 450€.  
+We control the motorized stage via Python and provide a user-friendly interface as well as the 3D models for the parts we replaced.
+The precision of displacement approaches the micrometer.   
+We added precisions for the budget. The maximum budget if you buy the manual stage and go through a supplier for the 3D-printing is 500€.
 
 <p align="center">
 <img src="images/before_after.png" width="600"/>
@@ -16,7 +17,10 @@ The precision of displacement approaches the micrometer for an overall budget ar
 
 The knobs initially used to manually move the platform are linked to motors via 2 belt-pulley systems (X and Y displacements). One removable part of the platform is replaced by a 3D-printed part that allows to fix the two motors. The pulleys are also 3D-printed to fit on the knobs. 
 
-An Arduino is used to control the two stepper motors with two motor shields. The motors are controllable directly via Arduino through the serial interface, or with a Python library that communicates serially with the Arduino, or with a Tkinter interface based on the Python library.
+An Arduino is used to control the two stepper motors with two motor shields. The motors are controllable
+-  via Arduino through the serial interface
+- with a Python library that communicates serially with the Arduino
+- with a user-friendly Tkinter interface based on the Python library
 
 # Bill of materials
 
@@ -30,13 +34,13 @@ We used what we had in our drawers, it may be possible to reduce the costs by ch
 | Stepper driver | 2 |    10€ | [Robotshop](https://www.robotshop.com/eu/fr/controleur-moteur-pas-easydriver.html?gclid=EAIaIQobChMIhLiChaj58QIVxQwGAB1bUgYvEAQYASABEgIi8vD_BwE) |  
 | Stepper motor  (0.9 °/s, 11 N/cm)  |1 | 11€ | [17HM08-1204S](https://www.omc-stepperonline.com/fr/nema-17-bipolaire-0-9deg-11ncm-15-6oz-in-1-2a-3-6v-42x42x21mm-4-fils.html)|  
 | Stepper motor with gearbox| 1| 73€ |[42STH38-100](https://www.gotronic.fr/art-moteur-42sth38-100-18839.htm)|  
-| Motor belt GT2 |2 |1€|[phidgets](https://www.phidgets.com/?tier=2&catid=42&pcid=35) |
-| Motor pulley 20 teeth/5mm bore |2 | 1€ |[phidgets](https://www.phidgets.com/?tier=2&catid=42&pcid=35) | |
+| Motor belt GT2 |2 |1€|[Phidgets](https://www.phidgets.com/?tier=2&catid=42&pcid=35) |
+| Motor pulley 20 teeth/5mm bore |2 | 1€ |[Phidgets](https://www.phidgets.com/?tier=2&catid=42&pcid=35) | |
 | Connection wires | | |  
 | Screws M2, M3 | | |  
 | 3D printer |
 
-Websites where you can buy the hardware: Motedis, Phidget, Robotshop, rs-online, RepRap
+Websites where you can buy the hardware: Motedis, Phidgets, Robotshop, rs-online, RepRap
 
 If you don't own a 3D printer you can use the platform [Sculpteo](https://www.sculpteo.com). Average delivery time: 2 weeks, possibility to pay for faster delivery. [Example of order](images/sculpteo_order.png).
 
@@ -74,7 +78,7 @@ In the end we were able to control the movement of the stage to go from one trap
 </p>
 
 
-By using the EasyDriver we could rotate each motor by on microstep. In the end the set-up enabled us to reach a minimal movement of 1,95 μm along the **x** axis and of 0,05 μm along the **y** axis.
+By using the EasyDriver we could rotate each motor by one microstep. In the end the set-up enabled us to reach a minimal movement of 1,95 μm along the **x** axis and of 0,05 μm along the **y** axis.
 
 In order to estimate the quality of our set-up, we measured its precision using the registration method which calculates the spatial correlation between two successive images.
 
@@ -84,7 +88,7 @@ On the one hand the analyses of these results shows that the stage moves linearl
 <img src="images/deplacement_y.png" width="400"/>
 </p>
 
-On the other hand we discovered that the movement along the **x** axis is flawed. Indeed when moving the stage along this axis we regularly measure a small unwanted movement along the **y** axis. This shortcoming leads to imprecise movement along the **x** axis.
+On the other hand we discovered that the movement along the **x** axis is flawed. Indeed when moving the stage along this axis we regularly measure a small unwanted movement along the **y** axis. This shortcoming leads to imprecise movement along the **x** axis, and it seems to come from the mechanics of the manual platform.
 
 
 <p align="center">
