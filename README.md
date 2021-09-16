@@ -77,6 +77,10 @@ In the end we were able to control the movement of the stage to go from one trap
 <img src="images/reach_traps.gif" width="600"/>
 </p>
 
+<p align="center">
+Credits: Léa Pinon and Jacques Fattacioli for the microfluidic set-up (ENS, IPGG), Thomas Le Saux and Aliénor Lahlou for the imaging set-up (ENS, Sony CSL)
+</p>  
+
 
 By using the EasyDriver we could rotate each motor by one microstep. In the end the set-up enabled us to reach a minimal movement of 1,95 μm along the **x** axis and of 0,05 μm along the **y** axis.
 
@@ -201,9 +205,13 @@ Press the buttons to move by predefined values, or enter manually a value and pr
 
 Note: You will have to determine the backlash of each of your motors: the number of steps you have to turn before the platform moves when you change directions. You will find 4 backlash values, one per direction per motor. We found backlash values between 7 and 12 steps. 
 
+## Thanks
 
+We thank Peter Hanappe for the advices on the mechanical parts and for providing codes to control the motors. We thank Eric Aït-Yahiatène for the 3D-printing. 
 
 ## License
 
 This project is licensed under the [GNU General Public License v3.0](https://tldrlegal.com/license/gnu-general-public-license-v3-(gpl-3))
 
+## Contacts
+If you have questions you can contact Ali Ruyer-Thompson (ali.ruyer--thompson :email: ens.psl.eu) or Aliénor Lahlou (alienor.lahlou :email: ens.psl.eu)
