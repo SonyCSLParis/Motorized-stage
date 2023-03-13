@@ -21,10 +21,7 @@
   <http://www.gnu.org/licenses/>.
 
 """
-
-
 from serial import *
-
 import time
 import json
 import traceback
@@ -38,7 +35,6 @@ def send_command(link, s):
     return assert_reply(read_reply(link))
 
 
-
 def read_reply(link):
     while True:
         s = link.readline().decode("ascii").rstrip()
@@ -50,6 +46,7 @@ def read_reply(link):
                 print("Reply: %s" % s)
                 break;
     return s
+
 
 def assert_reply(line):
     s = str(line)
@@ -65,15 +62,12 @@ def assert_reply(line):
     return return_values
 
 
-
-
-
-def handle_moveto(link, t, x, y, z=0):
+def handle_moveto(link, t, x, y, z):
     """move the motor to absolute position"""
     send_command(link, "m[%d,%d,%d,%d]" % (t, x, y, z))
 
 
-def handle_move(link, dt, dx, dy, dz=0):
+def handle_move(link, dt, dx, dy, dz):
     """move the motor by relative displacement"""
     send_command(link, "M[%d,%d,%d,%d]" % (dt, dx, dy, dz))
 
@@ -93,6 +87,7 @@ def send_idle(link):
     reply = send_command(link, "I")
     return reply[1]
 
+
 def handle_set_homing(link, a, b, c):
     """configure the homing order. x:0, y:1, z:2, skip:-1. 
     Example: set y, then x: handle_set_homing(link, 1, 0, -1)"""
@@ -100,10 +95,14 @@ def handle_set_homing(link, a, b, c):
 
 
 def handle_homing(link):
-    """perform homing in the order set by "handle_set_homing""""
+    """perform homing in the order set by "handle_set_homing"""
     send_command(link, "H")
 
-
+    
+def handle_enable(link, enable):
+    # Enable or diable to allow automatic or manual commmand
+    # respectively
+    send_command(link, "E[%d]"%int(enable))
 
 
 #source: https://forum.arduino.cc/t/arduino-and-python/39999
