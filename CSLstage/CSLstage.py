@@ -42,6 +42,9 @@ class CSLstage:
 
         self.link = CSLserial.create_link(self.arduino_port)
 
+        self.backlash_pos = 300
+        self.backlash_neg = -300
+
 
 
 
