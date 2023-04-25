@@ -5,7 +5,7 @@ The autofocus module is based on the small linear slider found, among other, on 
 
 The current 3D design uses [OpenScad](https://openscad.org/).
 
-The module uses two limit switches to detect the start and end position of the linear slider. The switched are the [Omron D2F-01L-D3](https://omronfs.omron.com/en_US/ecb/products/pdf/en-d2f.pdf).
+The module uses two limit switches to detect the start and end position of the linear slider. The switches are the [Omron D2F-01L-D3](https://omronfs.omron.com/en_US/ecb/products/pdf/en-d2f.pdf).
 
 
 The main files are:
@@ -17,13 +17,15 @@ The main files are:
 
 ## Bill of materials
 
-1 | [Linear slider](https://www.amazon.com/s?k=Linear+Rail+50mm+nema11&crid=AHAYTX9E18IR&sprefix=linear+rail+50mm+nema%2Caps%2C635&ref=nb_sb_noss) (50 mm or 100 mm, NEMA11 stepper motor)
-2 | M2 x xx mm screws  
-2 | M2 mm nuts  
-4 | M3 x xx mm screws
-2 | M3 x xx mm screws
-4 | Spheric magnets, 5 mm
-2 | [Omron D2F-01L-D3](https://omronfs.omron.com/en_US/ecb/products/pdf/en-d2f.pdf)
+| Quantity | Description |
+|----------|-------------|
+| 1 | [Linear slider](https://www.amazon.com/s?k=Linear+Rail+50mm+nema11&crid=AHAYTX9E18IR&sprefix=linear+rail+50mm+nema%2Caps%2C635&ref=nb_sb_noss) (50 mm or 100 mm, NEMA11 stepper motor) |
+| 2 | M2 x xx mm screws  |
+| 2 | M2 mm nuts |
+| 4 | M3 x xx mm screws |
+| 2 | M3 x xx mm screws |
+| 4 | Spheric magnets, 5 mm |
+| 2 | [Omron D2F-01L-D3](https://omronfs.omron.com/en_US/ecb/products/pdf/en-d2f.pdf) |
 
 
 
