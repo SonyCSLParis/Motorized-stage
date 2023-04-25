@@ -7,9 +7,9 @@ The autofocus module is based on the small linear slider found, among other, on 
 
 On the front side, the sample holder snaps onto the front panel of the slider thanks to four spheric magnets. The sample itself is held using a simple rubber band.
 
-The current 3D design uses [OpenScad](https://openscad.org/).
+The module includes two limit switches to detect the start and end position of the linear slider. The switches are the [Omron D2F-01L-D3](https://omronfs.omron.com/en_US/ecb/products/pdf/en-d2f.pdf).
 
-The module uses two limit switches to detect the start and end position of the linear slider. The switches are the [Omron D2F-01L-D3](https://omronfs.omron.com/en_US/ecb/products/pdf/en-d2f.pdf).
+The current 3D design was made with [OpenScad](https://openscad.org/).
 
 
 The main files are:
