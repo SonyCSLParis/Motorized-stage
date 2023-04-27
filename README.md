@@ -112,15 +112,16 @@ Note: You will have to determine the backlash of each of your motors: the number
 
 ### Photos
 
-<img src="https://user-images.githubusercontent.com/20478886/234916331-f735a618-023f-4e14-959b-d6b5563ef728.jpg" width="45%">
-</img> <img src="https://user-images.githubusercontent.com/20478886/234916360-f88d8eee-468c-4019-a319-57cfc0e260fb.jpg" width="45%">
-</img> <img src="https://user-images.githubusercontent.com/20478886/234917096-ce442fd7-9bc1-49f0-9840-b0620c93ff43.jpg" width="45%">
-</img> <img src="https://user-images.githubusercontent.com/20478886/234917655-ea80404b-b252-4a9d-a70e-d05b6db17a9f.jpg" width="45%"></img> 
+<img src="https://user-images.githubusercontent.com/20478886/234916331-f735a618-023f-4e14-959b-d6b5563ef728.jpg" width="40%">
+</img> <img src="https://user-images.githubusercontent.com/20478886/234916360-f88d8eee-468c-4019-a319-57cfc0e260fb.jpg" width="40%">
+</img> <img src="https://user-images.githubusercontent.com/20478886/234917096-ce442fd7-9bc1-49f0-9840-b0620c93ff43.jpg" width="40%">
+</img> <img src="https://user-images.githubusercontent.com/20478886/234917655-ea80404b-b252-4a9d-a70e-d05b6db17a9f.jpg" width="40%"></img> 
 
 ### How to reproduce: 
 
-https://github.com/SonyCSLParis/Motorized-stage/blob/main/README_xy.md
-https://github.com/openUC2/UC2-Motorized-XY-Table
+https://github.com/SonyCSLParis/Motorized-stage/tree/main/XY-stage  
+https://github.com/SonyCSLParis/Motorized-stage/tree/main/Z-stage  
+https://github.com/openUC2/UC2-Motorized-XY-Table  
 
 
 ## License
