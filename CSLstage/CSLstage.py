@@ -42,8 +42,8 @@ class CSLstage:
 
         self.link = CSLserial.create_link(self.arduino_port)
 
-        self.backlash_pos = 300
-        self.backlash_neg = -300
+        self.backlash_pos = 1#300
+        self.backlash_neg = -1#-300
 
 
 
@@ -80,7 +80,7 @@ class CSLstage:
         reply = CSLserial.send_command(self.link, "I")
         return reply[1]
 
-    def handle_set_homing(self, a, b, c):
+    def handle_set_homing(self, a=2, b=-1, c=-1):
         """configure the homing order. x:0, y:1, z:2, skip:-1. 
         Example: set y, then x: handle_set_homing(link, 1, 0, -1)"""
         CSLserial.send_command(self.link, "h[%d,%d,%d]" % (a,b,c))
@@ -144,7 +144,12 @@ if __name__ == "__main__":
     CSLserial.reset_arduino(stage.link)
     #handle_moveto(link_arduino, 2000, 1600, 0, 0)
 
-    stage.handle_enable(0)
+
+
+    stage.handle_enable(1)
+    stage.handle_set_homing()
+    stage.handle_homing()
+    """
     stage.handle_move(6000, 1600, 1600, 1600) 
 
     stage.handle_pause() #ici mettre la fonction pause
@@ -160,5 +165,5 @@ if __name__ == "__main__":
     status = stage.send_idle()
     print(status)
 
-
+    """
     stage.link.close() 
