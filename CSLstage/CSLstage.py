@@ -23,7 +23,7 @@
 """
 
 
-from CSLserial import CSLserial
+from CSLserial import ControlSerial
 
 import time
 import json
@@ -31,7 +31,7 @@ import traceback
 import numpy as np
 
         
-class CSLstage:
+class ControlStage:
     def __init__(self, arduino_port, gears):
         
         self.x = 0
@@ -40,7 +40,7 @@ class CSLstage:
         self.gears = gears
         self.arduino_port = arduino_port
 
-        self.link = CSLserial.create_link(self.arduino_port)
+        self.link = ControlSerial(self.arduino_port)
 
         self.backlash_pos = 1#300
         self.backlash_neg = -1#-300
@@ -51,45 +51,47 @@ class CSLstage:
     def handle_enable(self, enable):
         # Enable or diable to allow automatic or manual command
         # respectively
-        CSLserial.send_command(self.link, "E[%d]"%int(enable))
+        self.link.send_command("E[%d]"%int(enable))
 
 
 
     def handle_moveto(self, t, x, y, z=0):
         """move the motor to absolute position"""
-        CSLserial.send_command(self.link, "m[%d,%d,%d,%d]" % (t, x, y, z))
+        self.link.send_command("m[%d,%d,%d,%d]" % (t, x, y, z))
 
 
     def handle_move(self, dt, dx, dy, dz=0):
         """move the motor by relative displacement"""
-        CSLserial.send_command(self.link, "M[%d,%d,%d,%d]" % (dt, dx, dy, dz))
+        self.link.send_command("M[%d,%d,%d,%d]" % (dt, dx, dy, dz))
 
 
     def handle_pause(self):
         """pause after the ongoing moving task"""
-        CSLserial.send_command(self.link, "p")
+        self.link.send_command("p")
 
 
     def handle_continue(self):
         """restart after pause"""
-        CSLserial.send_command(self.link, "c")
+        self.link.send_command("c")
 
 
     def send_idle(self):
         """assert the connection is correctly established"""
-        reply = CSLserial.send_command(self.link, "I")
+        reply = self.link.send_command("I")
         return reply[1]
 
     def handle_set_homing(self, a=2, b=-1, c=-1):
         """configure the homing order. x:0, y:1, z:2, skip:-1. 
         Example: set y, then x: handle_set_homing(link, 1, 0, -1)"""
-        CSLserial.send_command(self.link, "h[%d,%d,%d]" % (a,b,c))
+        self.link.send_command("h[%d,%d,%d]" % (a,b,c))
 
 
     def handle_homing(self):
         """perform homing in the order set by "handle_set_homing"""
-        CSLserial.send_command(self.link, "H")
+        self.link.send_command("H")
 
+    def close(self):
+        self.link.driver.close()
 
 
     # X displacement
@@ -141,7 +143,7 @@ if __name__ == "__main__":
     port_arduino = 'COM6'
     stage = CSLstage(port_arduino, [1, 100, 1])
 
-    CSLserial.reset_arduino(stage.link)
+    stage.link.reset_arduino()
     #handle_moveto(link_arduino, 2000, 1600, 0, 0)
 
 
@@ -166,4 +168,4 @@ if __name__ == "__main__":
     print(status)
 
     """
-    stage.link.close() 
+    stage.close() 

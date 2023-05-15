@@ -50,6 +50,7 @@ void handle_moveat(IRomiSerial *romiSerial, int16_t *args, const char *string_ar
 void handle_pause(IRomiSerial *romiSerial, int16_t *args, const char *string_arg);
 void handle_continue(IRomiSerial *romiSerial, int16_t *args, const char *string_arg);
 void handle_reset(IRomiSerial *romiSerial, int16_t *args, const char *string_arg);
+void handle_zero(IRomiSerial *romiSerial, int16_t *args, const char *string_arg);
 void send_position(IRomiSerial *romiSerial, int16_t *args, const char *string_arg);
 void send_idle(IRomiSerial *romiSerial, int16_t *args, const char *string_arg);
 void handle_homing(IRomiSerial *romiSerial, int16_t *args, const char *string_arg);
@@ -66,6 +67,7 @@ const static MessageHandler handlers[] = {
         { 'p', 0, false, handle_pause },
         { 'c', 0, false, handle_continue },
         { 'r', 0, false, handle_reset },
+        { 'z', 0, false, handle_zero },
         { 'P', 0, false, send_position },
         { 'I', 0, false, send_idle },
         { 'H', 0, false, handle_homing },
@@ -134,14 +136,15 @@ void loop()
         delay(1);
 }
 
-
 int moveat(int dx, int dy, int dz)
 {
         int err = 0;
         block_t *block = block_buffer_get_empty();
         if (block == 0) {
                 err = -1;
-        } else {                
+        } else if (dx == 0 && dy == 0 && dz == 0) {
+                reset();
+        } else {
                 block->type = BLOCK_MOVEAT;
                 block->data[DT] = 1000;
                 block->data[DX] = dx;
@@ -263,6 +266,16 @@ void handle_reset(IRomiSerial *romiSerial, int16_t *args, const char *string_arg
                 romiSerial->send_ok();  
         } else if (controller_state == STATE_RUNNING) {
                 reset();
+                romiSerial->send_ok();  
+        } else {
+                romiSerial->send_error(101, kInvalidState);  
+        }
+}
+
+void handle_zero(IRomiSerial *romiSerial, int16_t *args, const char *string_arg)
+{
+        if (controller_state == STATE_PAUSED || is_idle()) {
+                stepper_zero();
                 romiSerial->send_ok();  
         } else {
                 romiSerial->send_error(101, kInvalidState);  
@@ -452,7 +465,7 @@ void handle_spindle(IRomiSerial *romiSerial, int16_t *args, const char *string_a
 
 void send_info(IRomiSerial *romiSerial, int16_t *args, const char *string_arg)
 {
-        romiSerial->send("[0,\"Oquam\",\"0.1\",\"" __DATE__ " " __TIME__ "\"]"); 
+        romiSerial->send("[0,\"Oquam\",\"0.1\",\"" __DATE__ " " __TIME__ "\"]");
 }
 
 static bool quit_testing;

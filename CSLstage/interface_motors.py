@@ -24,7 +24,7 @@
 import numpy as np
 import tkinter as tk
 import argparse
-from CSLstage.CSLstage import CSLstage
+from CSLstage import ControlStage
 import sys
 
 
@@ -263,12 +263,12 @@ if __name__ == "__main__":
     gears = [1, 100, 1]
 
     arduino_port = args.port
-    stage = CSLstage(arduino_port, gears)
+    stage = ControlStage(arduino_port, gears)
 
     interface_motors(stage)
 
     """
-    from CSLstage.CSLstage import CSLstage
+    from CSLstage import ControlStage
     from CSLstage.interface_motors import interface_motors
 
     x = 0
@@ -277,7 +277,7 @@ if __name__ == "__main__":
     gears = [1, 100, 1]
 
     arduino_port = "COM6"
-    stage = CSLstage(arduino_port, gears)
+    stage = ControlStage(arduino_port, gears)
 
     interface_motors(stage)
     """

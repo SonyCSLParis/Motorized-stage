@@ -300,19 +300,19 @@ ISR(TIMER1_COMPA_vect)
                         /* For moveto events, substract the current
                          * position of the CNC. */
                         if (current_block_->type == BLOCK_MOVETO) {
-                                if (delta_[0] < 0)
-                                        delta_[0] = 0;
-                                else
+                                // if (delta_[0] < 0)
+                                //         delta_[0] = 0;
+                                // else
                                         delta_[0] -= stepper_position_[0];
                                 
-                                if (delta_[1] < 0)
-                                        delta_[1] = 0;
-                                else
+                                // if (delta_[1] < 0)
+                                //         delta_[1] = 0;
+                                // else
                                         delta_[1] -= stepper_position_[1];
                                 
-                                if (delta_[2] < 0)
-                                        delta_[2] = 0;
-                                else
+                                // if (delta_[2] < 0)
+                                //         delta_[2] = 0;
+                                // else
                                         delta_[2] -= stepper_position_[2];
                         }
 
