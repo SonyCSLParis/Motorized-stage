@@ -51,15 +51,15 @@ An [Arduino code](Oquam/Oquam.ino) is provided to control the motors. An extra l
 
 ```python
 from serial import Serial
-from CSLstage.CSLstage import CSLstage
+from CSLstage import ControlStage
 
 arduino_port = "COM6"
 
-stage = CSLstage(arduino_port, [1,1,1]) #gearbox ratio of X, Y and Z axis
+stage = ControlStage(arduino_port, [1,1,1]) #gearbox ratio of X, Y and Z axis
 stage.handle_enable(1)
 stage.move_dx(10)
 stage.handle_enable(0)
-stage.link.close() 
+stage.close() 
 ```
 
 
