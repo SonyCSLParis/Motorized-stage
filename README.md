@@ -70,7 +70,7 @@ stage.close()
 First install Arduino IDE and Python 3.7 (links in the **Software** section)  
 Second download this repository. We will call the address where you save it "path/to/repo" (for example "C://User/Me/MyRepos").
 
-Open the [.ino](Oquam/Oquam.ino) file. 
+Open the [Oquam/Oquam.ino](Oquam/Oquam.ino) file. 
 Open it with Arduino IDE software by double clicking on the file **Oquam.ino** and upload the codes on the Arduino by clicking on the arrow. If it fails make sure that you are correctly connected to the Arduino: check the card type and the COM port in the "Tools" ("Outils" on the image). 
 
 <p align="center">
@@ -90,10 +90,10 @@ python setup.py develop
 You can launch the interface 
 
 ```
-from CSLstage.CSLstage import CSLstage
-from CSLstage.interface_motors import interface_motors
+from CSLstage import ControlStage
+from CSLstage import interface_motors
 
-stage = CSLstage("COM6", [1,1,1])
+stage = ControlStage("COM6", [1,1,1])
 interface_motors(stage)
 ```
 Press the buttons to move by predefined values, or enter manually a value and press the "move" button. The values correspond to motor steps.
