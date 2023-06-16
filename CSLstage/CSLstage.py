@@ -135,7 +135,8 @@ class ControlStage:
         self.z += dz // self.gears[2]
         # Allows to display the global x displacement
 
-        
+    def reset(self):
+        self.link.close()
 
 
 if __name__ == "__main__":
@@ -168,4 +169,4 @@ if __name__ == "__main__":
     print(status)
 
     """
-    stage.close() 
+    stage.reset() 

@@ -59,7 +59,7 @@ stage = ControlStage(arduino_port, [1,1,1]) #gearbox ratio of X, Y and Z axis
 stage.handle_enable(1)
 stage.move_dx(10)
 stage.handle_enable(0)
-stage.close() 
+stage.reset() 
 ```
 
 
