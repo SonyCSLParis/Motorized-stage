@@ -65,6 +65,9 @@ stage.reset()
 
 # Instructions
 
+## Connect the Arduino, the stepper driver and the stepper motor
+Refer to the docmentation of the stepper driver you selected to perform the wiring. For example: [EasyDrive stepper motor driver](https://www.instructables.com/How-to-Interface-Easy-Driver-With-Stepper-Motor-Us/), [XY-motorized stage wiring](https://github.com/SonyCSLParis/Motorized-stage/tree/main/XY-stage), 
+
 ## Arduino and Python codes  
 
 First install Arduino IDE and Python 3.7 (links in the **Software** section)  
