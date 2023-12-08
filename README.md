@@ -13,7 +13,7 @@ The use of limit-switches is integrated and is preferred for safety and reproduc
 
 ## Pre-requisites
 
-- Install RomiSerial and the Arduino software XXXX
+- Install [CSL-Serial](https://github.com/SonyCSLParis/CSL-Serial) and the [Arduino software](https://www.arduino.cc/en/software)
 - The stepper motor(s) and motor shield(s) are readily available. Refer to the example gallery for ideas. 
 - The code was tested on Windows and Linux
 
@@ -64,6 +64,9 @@ stage.reset()
 
 
 # Instructions
+
+## Connect the Arduino, the stepper driver and the stepper motor
+Refer to the docmentation of the stepper driver you selected to perform the wiring. For example: [EasyDrive stepper motor driver](https://www.instructables.com/How-to-Interface-Easy-Driver-With-Stepper-Motor-Us/), [XY-motorized stage wiring](https://github.com/SonyCSLParis/Motorized-stage/tree/main/XY-stage), 
 
 ## Arduino and Python codes  
 
