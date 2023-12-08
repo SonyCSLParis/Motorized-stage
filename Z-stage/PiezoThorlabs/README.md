@@ -1,7 +1,7 @@
 # Coarse control of a piezo-controlled translation stage
 
 Thorlabs provides a travel stage ([NFL5DP20](https://www.thorlabs.com/newgrouppage9.cfm?objectgroup_id=720&pn=NFL5DP20/M)) with a coarse manual translation range of 5 mm with possibility to 
-actuate a fine transational movement with a piezo controller ([KPZ101](https://github.com/SonyCSLParis/Motorized-stage/blob/main/Z-stage/PiezoThorlabs/KPZ101.jpg).  
+actuate a fine transational movement with a piezo controller ([KPZ101](https://github.com/SonyCSLParis/Motorized-stage/blob/main/Z-stage/PiezoThorlabs/KPZ101.jpg)).  
 
 ![stage](https://github.com/SonyCSLParis/Motorized-stage/blob/main/Z-stage/PiezoThorlabs/translation_stage.jpg)
 ![piezo](https://github.com/SonyCSLParis/Motorized-stage/blob/main/Z-stage/PiezoThorlabs/KPZ101.jpg)  
